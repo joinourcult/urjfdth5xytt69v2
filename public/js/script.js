@@ -1946,7 +1946,8 @@ function sendData(){
         method: 'POST',
         contentType: 'application/json; charset=utf-8',
         //url: "https://signallingserverfe4e8e9b6b.herokuapp.com/records",
-        url: "http://localhost:3000/records",
+        //url: "http://localhost:3000/records",
+        url: "https://oamk7o9jqdppei1a.herokuapp.com/records",
         data: `{"data": ${info}}`,
         success: function onSucess(result) {
             console.log('success');
