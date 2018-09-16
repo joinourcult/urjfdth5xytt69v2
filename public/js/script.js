@@ -1920,13 +1920,6 @@ function sendData(){
     // console.log('window.socialfp');
     // console.log(window.socialfp);
 
-    let info = JSON.stringify({
-        fp: window.fp,
-        fp2: window.fp2,
-        socialfp: window.socialfp
-    });
-
-
     function getCookie(name) {
         var matches = document.cookie.match(new RegExp(
             "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
@@ -1934,11 +1927,19 @@ function sendData(){
         return matches ? decodeURIComponent(matches[1]) : undefined;
     }
     
-    referrer = getCookie('referrer2');
-    ipAddress = getCookie('ipAddress');
+    const referrer = getCookie('referrer2');
+    const ipAddress = getCookie('ipAddress');
+    const requestInfo = `{"referrer":"${referrer}","ipAddress":"${ipAddress}"}`;
 
     console.log('referrer = ' + referrer);
     console.log('ipAddress = ' + ipAddress);
+
+    let info = JSON.stringify({
+        fp: window.fp,
+        fp2: window.fp2,
+        socialfp: window.socialfp,
+        requestInfo: requestInfo
+    });
     
     $.ajax({
         async: true,
